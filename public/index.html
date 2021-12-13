@@ -3,7 +3,33 @@
   <head>
     <link rel="stylesheet" href ="style.css">
     <body>
+      <div class = "simon">
+        <button class = "green greenPressed" id = "greenButton"> Green Button </button>
+        <button class = "red redPressed" id = "redButton"> Red Button </button>
+        <button class = "yellow yellowPressed" id = "yellowButton"> Yellow Button </button>
+        <button class = "blue bluePressed" id = "blueButton"> Blue Button </button>
+      </div>
       <h1>hi</h1>
     </body>
   </head>
+  <script>
+
+  document.getElementById ("greenButton").addEventListener ("click", function (){
+    document.getElementById('greenButton').classList.remove('green');
+    console.log('green button clicked');
+  });
+  document.getElementById ("redButton").addEventListener ("click", function (){
+    document.getElementById('redButton').classList.remove('red');
+    console.log('red button clicked');
+  });
+  document.getElementById ("yellowButton").addEventListener ("click", function (){
+    document.getElementById('yellowButton').classList.remove('yellow');
+    console.log('yellow button clicked');
+  });
+  document.getElementById ("blueButton").addEventListener ("click", function (){
+    document.getElementById('blueButton').classList.remove('blue');
+    console.log('blue button clicked');
+  });
+
+  </script>
 </html>

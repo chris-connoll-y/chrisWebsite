@@ -1,6 +1,36 @@
 body {
   background-image: url("https://images-gmi-pmc.edge-generalmills.com/da2abda1-fae1-4782-b65f-93868ca5bd40.jpg");
   background-repeat: repeat-y;
-  align-content: center;
-  background-color: powderblue;
+  background-color: powderBlue;
+}
+
+.greenPressed {
+  background-color: lightGreen;
+}
+
+.green {
+  background-color: green;
+}
+
+.redPressed {
+  background-color: pink;
+}
+.red {
+  background-color: red;
+}
+
+.yellowPressed {
+  background-color: rgb(255,252,173);
+}
+
+.yellow {
+  background-color: rgb(255,247,0);
+}
+
+.bluePressed {
+  background-color: powderBlue;
+}
+
+.blue {
+  background-color: blue;
 }
