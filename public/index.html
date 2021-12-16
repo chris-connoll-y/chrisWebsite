@@ -13,6 +13,59 @@
     </body>
   </head>
   <script>
+  var colorOrder = [];
+  function randomColor (){
+    var newColor = Math.random ()* 4;
+    return Math.floor (newColor);
+  }
+
+  function displaySequence (){
+    displaySequenceRecursion (0, false);
+  }
+
+  function turnOnColor (colorNum){
+    if (colorNum==0){
+      document.getElementById('greenButton').classList.remove('green');
+    }
+    else if (colorNum==1){
+      document.getElementById('redButton').classList.remove('red');
+    }
+    else if (colorNum==2){
+      document.getElementById('yellowButton').classList.remove('yellow');
+    }
+    else{
+      document.getElementById('blueButton').classList.remove('blue');
+    }
+  }
+  function turnOffColor (colorNum){
+    if (colorNum==0){
+      document.getElementById('greenButton').classList.add('greenPressed');
+    }
+    else if (colorNum==1){
+      document.getElementById('redButton').classList.add('redPressed');
+    }
+    else if (colorNum==2){
+      document.getElementById('yellowButton').classList.add('yellowPressed');
+    }
+    else{
+      document.getElementById('blueButton').classList.add('bluePressed');
+    }
+  }
+  funtion displaySequenceRecursion (orderInList, isIlluminated){
+    if (isIlluminated == false){
+       turnOnColor(colorOrder [orderInList]);
+       var isIlluminated = true;
+    }
+    else {
+      turnOffColor(colorOrder [orderInList]);
+      var isIlluminated = false;
+      orderInList++;
+
+    }
+    setTimeout(() => {displaySequenceRecursion(orderInList, isIlluminated)}, 2000);
+  }
+
+  //setTimeout(() => {myMethod('ok','nope')}, 2000);
 
   document.getElementById ("greenButton").addEventListener ("click", function (){
     document.getElementById('greenButton').classList.remove('green');
