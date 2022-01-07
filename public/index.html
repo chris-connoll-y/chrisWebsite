@@ -1,88 +1,193 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href ="style.css">
-    <body>
-      <div class = "simon">
-        <button class = "green greenPressed" id = "greenButton"> Green Button </button>
-        <button class = "red redPressed" id = "redButton"> Red Button </button>
-        <button class = "yellow yellowPressed" id = "yellowButton"> Yellow Button </button>
-        <button class = "blue bluePressed" id = "blueButton"> Blue Button </button>
-      </div>
-      <h1>hi</h1>
-    </body>
-  </head>
-  <script>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+
+<body>
+  <div class="simon">
+    <button class="green greenPressed" id="greenButton"> Green Button </button>
+    <button class="red redPressed" id="redButton"> Red Button </button>
+    <button class="yellow yellowPressed" id="yellowButton"> Yellow Button </button>
+    <button class="blue bluePressed" id="blueButton"> Blue Button </button>
+    <button class="" id="startButton"> Start Button </button>
+  </div>
+  <h1 id="highScore"></h1>
+  <h1 id="previousHighScore"></h1>
+</body>
+</head>
+<script>
   var colorOrder = [];
-  function randomColor (){
-    var newColor = Math.random ()* 4;
-    return Math.floor (newColor);
+  var indexOfUserInput = 0;
+  var sequenceIsGoing = false;
+  var gameIsActive;
+  var highScore = 0;
+
+
+  function randomColor() {
+    var newColor = Math.random() * 4;
+    return Math.floor(newColor);
+  }
+  if (window.localStorage.previousHighScore == null){
+    var previousHighScore = 0;
+  }
+  else {
+    var previousHighScore = window.localStorage.previousHighScore;
+  }
+document.getElementById("highScore").innerHTML = "High score: " +  highScore;
+document.getElementById("previousHighScore").innerHTML = "Previous high score: " + previousHighScore;
+  function nextLevel() {
+    colorOrder.push(randomColor());
+  }
+  document.getElementById("startButton").addEventListener("click", function() {
+    if (sequenceIsGoing == false) {
+      colorOrder = [];
+      playSimon();
+      gameIsActive = true;
+    }
+  });
+  document.getElementById("greenButton").addEventListener("click", function() {
+    if (sequenceIsGoing == false) {
+      if (colorOrder[indexOfUserInput] == 0 && gameIsActive) {
+        indexOfUserInput++;
+        if (indexOfUserInput == colorOrder.length) {
+          setTimeout(() => {
+            playSimon()
+          }, 500);
+        }
+      } else {
+        if (colorOrder.length - 1> highScore){
+          highScore = colorOrder.length - 1;
+        }
+        document.getElementById("highScore").innerHTML = "High score: " +  highScore;
+        window.localStorage.previousHighScore = highScore;
+        document.getElementById("previousHighScore").innerHTML = "Previous high score: " +  window.localStorage.previousHighScore;
+        console.log('You lost');
+        gameIsActive = false;
+      }
+    }
+  });
+  document.getElementById("redButton").addEventListener("click", function() {
+    if (sequenceIsGoing == false) {
+      if (colorOrder[indexOfUserInput] == 1 && gameIsActive) {
+        indexOfUserInput++;
+        if (indexOfUserInput == colorOrder.length) {
+          setTimeout(() => {
+            playSimon()
+          }, 500);
+        }
+      } else {
+        if (colorOrder.length - 1> highScore){
+          highScore = colorOrder.length - 1;
+        }
+        document.getElementById("highScore").innerHTML = "High score: " +  highScore;
+        window.localStorage.previousHighScore = highScore;
+        document.getElementById("previousHighScore").innerHTML = "Previous high score: " +  window.localStorage.previousHighScore;
+        console.log('You lost');
+        gameIsActive = false;
+      }
+    }
+  });
+  document.getElementById("yellowButton").addEventListener("click", function() {
+    if (sequenceIsGoing == false) {
+      if (colorOrder[indexOfUserInput] == 2 && gameIsActive) {
+        indexOfUserInput++;
+        if (indexOfUserInput == colorOrder.length) {
+          setTimeout(() => {
+            playSimon()
+          }, 500);
+        }
+      } else {
+        if (colorOrder.length - 1> highScore){
+          highScore = colorOrder.length - 1;
+        }
+        document.getElementById("highScore").innerHTML = "High score: " +  highScore;
+        window.localStorage.previousHighScore = highScore;
+        document.getElementById("previousHighScore").innerHTML = "Previous high score: " +  window.localStorage.previousHighScore;
+        console.log('You lost');
+        gameIsActive = false;
+      }
+    }
+  });
+  document.getElementById("blueButton").addEventListener("click", function() {
+    if (sequenceIsGoing == false) {
+      if (colorOrder[indexOfUserInput] == 3 && gameIsActive) {
+        indexOfUserInput++;
+        if (indexOfUserInput == colorOrder.length) {
+          setTimeout(() => {
+            playSimon()
+          }, 500);
+        }
+      } else {
+        if (colorOrder.length - 1> highScore){
+          highScore = colorOrder.length - 1;
+        }
+        document.getElementById("highScore").innerHTML = "High score: " +  highScore;
+        window.localStorage.previousHighScore = highScore;
+        document.getElementById("previousHighScore").innerHTML = "Previous high score: " +  window.localStorage.previousHighScore;
+        console.log('You lost');
+        gameIsActive = false;
+      }
+    }
+  });
+
+  function playSimon() {
+    indexOfUserInput = 0;
+    nextLevel();
+    displaySequence();
   }
 
-  function displaySequence (){
-    displaySequenceRecursion (0, false);
+  function displaySequence() {
+    sequenceIsGoing = true;
+    displaySequenceRecursion(0, false);
+    sequenceIsGoing = false;
   }
 
-  function turnOnColor (colorNum){
-    if (colorNum==0){
+  function turnOnColor(colorNum) {
+    if (colorNum == 0) {
       document.getElementById('greenButton').classList.remove('green');
-    }
-    else if (colorNum==1){
+    } else if (colorNum == 1) {
       document.getElementById('redButton').classList.remove('red');
-    }
-    else if (colorNum==2){
+    } else if (colorNum == 2) {
       document.getElementById('yellowButton').classList.remove('yellow');
-    }
-    else{
+    } else {
       document.getElementById('blueButton').classList.remove('blue');
     }
   }
-  function turnOffColor (colorNum){
-    if (colorNum==0){
-      document.getElementById('greenButton').classList.add('greenPressed');
-    }
-    else if (colorNum==1){
-      document.getElementById('redButton').classList.add('redPressed');
-    }
-    else if (colorNum==2){
-      document.getElementById('yellowButton').classList.add('yellowPressed');
-    }
-    else{
-      document.getElementById('blueButton').classList.add('bluePressed');
-    }
-  }
-  funtion displaySequenceRecursion (orderInList, isIlluminated){
-    if (isIlluminated == false){
-       turnOnColor(colorOrder [orderInList]);
-       var isIlluminated = true;
-    }
-    else {
-      turnOffColor(colorOrder [orderInList]);
-      var isIlluminated = false;
-      orderInList++;
 
+  function turnOffColor(colorNum) {
+    if (colorNum == 0) {
+      document.getElementById('greenButton').classList.add('green');
+    } else if (colorNum == 1) {
+      document.getElementById('redButton').classList.add('red');
+    } else if (colorNum == 2) {
+      document.getElementById('yellowButton').classList.add('yellow');
+    } else {
+      document.getElementById('blueButton').classList.add('blue');
     }
-    setTimeout(() => {displaySequenceRecursion(orderInList, isIlluminated)}, 2000);
   }
+
+
+  function displaySequenceRecursion(orderInList, isIlluminated) {
+    if (orderInList < colorOrder.length) {
+      if (isIlluminated == false) {
+        turnOnColor(colorOrder[orderInList]);
+        var isIlluminated = true;
+      } else {
+        turnOffColor(colorOrder[orderInList]);
+        var isIlluminated = false;
+        orderInList++;
+
+      }
+      setTimeout(() => {
+        displaySequenceRecursion(orderInList, isIlluminated)
+      }, 500);
+    }
+
+  }
+
 
   //setTimeout(() => {myMethod('ok','nope')}, 2000);
+</script>
 
-  document.getElementById ("greenButton").addEventListener ("click", function (){
-    document.getElementById('greenButton').classList.remove('green');
-    console.log('green button clicked');
-  });
-  document.getElementById ("redButton").addEventListener ("click", function (){
-    document.getElementById('redButton').classList.remove('red');
-    console.log('red button clicked');
-  });
-  document.getElementById ("yellowButton").addEventListener ("click", function (){
-    document.getElementById('yellowButton').classList.remove('yellow');
-    console.log('yellow button clicked');
-  });
-  document.getElementById ("blueButton").addEventListener ("click", function (){
-    document.getElementById('blueButton').classList.remove('blue');
-    console.log('blue button clicked');
-  });
-
-  </script>
 </html>

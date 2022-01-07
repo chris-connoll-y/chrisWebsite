@@ -6,6 +6,13 @@ body {
 
 .greenPressed {
   background-color: lightGreen;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .green {
@@ -14,6 +21,13 @@ body {
 
 .redPressed {
   background-color: pink;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 .red {
   background-color: red;
@@ -21,6 +35,13 @@ body {
 
 .yellowPressed {
   background-color: rgb(255,252,173);
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .yellow {
@@ -29,6 +50,13 @@ body {
 
 .bluePressed {
   background-color: powderBlue;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .blue {
