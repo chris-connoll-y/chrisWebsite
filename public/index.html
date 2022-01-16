@@ -14,11 +14,16 @@
   </div>
   <h1 id="highScore">High Score:</h1>
   <h1></h1>
+  <div>
+    <h1>Amogus</h1>
+    <canvas id="canvas" width="900" height="500"></canvas>
+  </div>
   <script>
     document.getElementById("highScore").innerHTML = "High score: " + window.localStorage.getItem('previousHighScore');
   </script>
 </body>
 </head>
+<script src="canvas.js"></script>
 <script>
   let simonGame = {
     colorOrder: [],
