@@ -5,16 +5,20 @@ var totalX = 0;
 var totaldX = 1;
 var y = 107;
 var dy = 1;
+var rotation = 0;
 function drawArt(ctx) {
   // Draw triangle
   ctx.beginPath();
-  ctx.moveTo(totalX+100,150);
-  ctx.lineTo(totalX+150, 64);
-  ctx.lineTo(totalX+200, 150);
-  ctx.lineTo(totalX+100, 150);
+  ctx.save(rotation);
+  ctx.translate(125,107);
+  ctx.rotate(rotation);
+  ctx.moveTo(-25,43);
+  ctx.lineTo(25, -43);
+  ctx.lineTo(75, 43);
+  ctx.lineTo(-25, 43);
   ctx.stroke();
-  ctx.closePath();
   ctx.fill();
+  ctx.restore();
 
   ctx.beginPath();
   ctx.arc(totalX+275, 107, 50, 0, Math.PI * 2, false);
@@ -50,7 +54,7 @@ function drawArt(ctx) {
   {
     totaldX = 1;
   }
-
+  rotation+=0.03;
 }
 
 function draw() {
